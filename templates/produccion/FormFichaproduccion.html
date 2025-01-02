@@ -1,0 +1,72 @@
+{% extends 'baselogin.html' %}
+  
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produccion</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .button-container {
+          display: flex;
+          gap: 10px; /* Espacio entre los botones */
+          cursor: pointer;
+      }
+  </style>
+</head>
+<body>
+  <h5>PRODUCCIÓN</h5>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <label for="{{ formfichaproduccion.cantidadproduccion.id_for_label }}">Cantidad Producción:</label>
+    {{ FormFichaproduccion.cantidadproduccion }}
+    <br>
+
+    <label for="{{ formfichaproduccion.medirclorado.id_for_label }}">Medición Clorado:</label>
+    {{ FormFichaproduccion.medirclorado }}
+    <br>
+
+    <label for="{{ formfichaproduccion.medirph.id_for_label }}">Medición PH:</label>
+    {{ FormFichaproduccion.medirph }}
+    <br>
+
+    <label for="{{ formfichaproduccion.filtrado.id_for_label }}">Filtrado:</label>
+    {{ FormFichaproduccion.filtrado }}
+    <br>
+
+    <label for="{{ formfichaproduccion.microfiltrado.id_for_label }}">Microfiltrado:</label>
+    {{ FormFichaproduccion.microfiltrado }}
+    <br>
+
+    <label for="{{ formfichaproduccion.emplaque.id_for_label }}">Empaque:</label>
+    {{ FormFichaproduccion.empaque }}
+    <br>
+
+    <label for="{{ formfichaproduccion.num_lote_produccion.id_for_label }}">Número de Lote:</label>
+    {{ FormFichaproduccion.num_lote_produccion }}
+    <br>
+
+    <label for="{{ formfichaproduccion.estadoproduccion.id_for_label }}">Estado Produccion:</label>
+    {{ FormFichaproduccion.estadoproduccion }}
+    <br>
+
+
+    <div class="button-container">
+      <button type="submit" class="btn-submit">Crear Pedido</button>
+      <button type="button" class="btn btn-danger" onclick="window.location.href='/AppProduccion/'">Cancelar</button>
+    </div>
+  </form>
+
+      
+</body>
+
+
+</html>
+
+
+{% endblock %}

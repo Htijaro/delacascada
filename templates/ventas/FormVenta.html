@@ -1,0 +1,45 @@
+{% extends 'baselogin.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Pedido</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h5>CREAR VENTA</h5>
+  
+  <form method="post">
+    {% csrf_token %}
+    
+    <label aria-label="Id Factura" for="{{ formpedido.idfactura.id_for_label }}">Id Factura:</label>
+    {{ formventa.idfactura }}
+    <br>
+    
+    <label aria-label="Nombre Usuario" for="{{ formpedido.nombre_usuario.id_for_label }}">Nombre Usuario:</label>
+    {{ formventa.nombre_usuario }}
+    <br>
+    
+    <label aria-label="Seleccione Estado" for="{{ formpedido.idpedido.id_for_label }}">Id Pedido:</label>
+    {{ formventa.idpedido }}
+    <br>
+
+    
+    <div class="button-container">
+        <button type="submit" class="btn-submit">Crear Venta</button>
+        <button type="button" class="btn btn-danger" onclick="window.location.href='/AppVentas/'">Cancelar</button>
+    </div>
+  </form>
+
+    <script src="{% static 'js/scriptven.js' %}"></script>
+
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'ventas/base_ventas.html' %}
+{% load static %}
+{% block titulo %}
+
+    <h2>Pedidos</h2>
+
+{% endblock %}
+{% block ventas %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Pedidos</title>
+    <link rel="shortcut icon" href="Images/FaviconDashboard.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/styleVen.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+
+        <section id="content">
+            <!-- NAVBAR -->
+
+            <!-- MAIN -->
+            <main>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-square-plus"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="{% url 'formpedidos' %}">
+                                <h3>CREAR PEDIDO</h3>
+                            </a>
+
+
+
+                            <p></p>
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-file-excel"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="{% url 'exportar_excel_pedidos' %}" title="Exportar reporte">
+                                <h3>GENERAR REPORTE</h3>
+                            </a>
+
+                                
+
+                            <p></p>
+                        </span>
+                    </li>
+                </ul>
+
+
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3>Pedidos</h3>
+                            <i class='bx bx-search'></i>
+                            <i class='bx bx-filter'></i>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Fecha Pedido</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                    <th>Telefono</th>
+                                    
+                                    <th>Acciones</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for i in pedidoss %}
+
+                                <tr>
+                                    <td>
+                                        <p>{{ i.usuario_pedido }}</p>
+                                    </td>
+                                    <td>{{ i.fechapedido }}</td>
+                                    <td>{{ i.producto }}</td>
+                                    <td>{{ i.cantidad }}</td>
+                                    <td>{{ i.total }}</td>
+                                        {% if i.estadopedido == 'Cancelado' %}
+                                            <td><span class="status pending">{{ i.estadopedido }}</span></td>
+                                            
+                                        {% elif i.estadopedido == 'Pendiente' %}
+                                            <td><span class="status process">{{ i.estadopedido }}</span></td>
+
+                                        {% else %}
+                                            <td><span class="status completed">{{ i.estadopedido }}</span></td>
+                                        {% endif %}
+
+
+                                    <td>{{ i.telefonopedido }}</td>
+                                    <td class="acciones">
+                                        <a href="{% url 'editar_pedidos' i.idpedido %}"><span class="fa-solid fa-file-pen dark-purple "></span></a>
+                                        <a href="{% url 'eliminar_pedidos' i.idpedido %}"><span class="fa-solid fa-trash dark-purple Actions"></span></a>
+                                        <a href="{% url 'eliminar_pedidos' i.idpedido %}"><span class="fa-solid fa-receipt dark-purple"></span></a>
+                                    </td>
+                                </tr>    {% endfor %}
+
+                          
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </main>
+            <!-- MAIN -->
+    </div>
+
+{% endblock %}
+
+</html>

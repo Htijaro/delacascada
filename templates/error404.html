@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada | Agua de la Cascada</title>
+    <link rel="shortcut icon" href="{% static 'images/Favicon404.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/Styles404.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta name="description" content="Página no encontrada, estamos trabajando para solucionarlo.">
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="{% static 'images/LogoCASWhite.png' %}" alt="De La Cascada">
+        </a>
+
+        <nav class="navbar">
+            <a href="{% url 'index' %}">Inicio</a>
+            <a href="{% url 'index' %}">Nosotros</a>
+            <a href="{% url 'index' %}">Productos</a>
+            <a href="{% url 'index' %}">Contáctenos</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+
+    </header>
+
+    <div class="container">
+        <img class="error404" src="Images/404ErrorImg.png" alt="">
+        <h1><p>La página no se encuentra disponible. </p><br> <p>Estamos trabajando arduamente para solucionarlo lo antes posible</p> </h1>
+        
+
+        <div class="boton">
+            <button><a href="{% url 'index' %}">Volver atrás</a></button>
+        </div>
+    </div>
+
+    <script src="{% static 'js/script copy404.js' %}"></script>
+</body>
+
+</html>

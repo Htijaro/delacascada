@@ -1,0 +1,324 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agua de la Cascada</title>
+    <link rel="shortcut icon" href="{% static 'images/IconoLogo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+    
+    
+
+</head>
+
+<body>
+    <!-- Header section starts -->
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="{% static 'images/LogoCASWhite.png' %}" alt="De La Cascada">
+        </a>
+
+        <nav class="navbar">
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#productos">Productos</a>
+            <a href="#contactenos">Contáctenos</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'formpedidos' %}">Pedido</a>
+            {% endif %}
+        </nav>
+
+        <div class="icons">
+            <div title="Buscar" aria-label="Ingreso a la barra de búsqueda" class="fas fa-search" id="search-btn"></div>
+
+            {% if user.is_authenticated %}
+
+            <a  title="Carrito" aria-label="Ingreso al pedido por carrito" href="{% url 'Tienda' %}"><div class="fas fa-shopping-cart" id="cart-btn"></div></a>
+
+            {% else %}
+
+            <a title="Carrito" aria-label="Ingreso al pedido por carrito" href="{% url 'menu' %}"><div class="fas fa-shopping-cart" id="cart-btn"></div></a>
+
+            {% endif %}
+
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <a title="Ingresar" aria-label="Ingreso al inicio de sesión" href="{% url 'menu' %}"><div class="fas fa-right-to-bracket"></div></a>
+            
+
+        </div>
+
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="Buscar aquí...">
+            <label for="search-box" class="fas fa-search"></label>
+        </div>
+
+        <div class="cart-items-container">
+            <div class="cart-item">
+                <span class="fas fa-shopping-cart"></span>
+                <img src="{% static 'images/B250ml.jpg' %}" alt="250 ml">
+                <div class="content">
+                    <h3>250 ml</h3>
+                </div>
+            </div>
+            <div class="cart-item">
+                <span class="fas fa-shopping-cart"></span>
+                <img src="{% static 'images/B330ml.jpg' %}" alt="330 ml">
+                <div class="content">
+                    <h3>330 ml</h3>
+                </div>
+            </div>
+            <div class="cart-item">
+                <span class="fas fa-shopping-cart"></span>
+                <img src="{% static 'images/B600ml.jpg' %}" alt="600 ml">
+                <div class="content">
+                    <h3>600 ml</h3>
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <span class="fas fa-shopping-cart"></span>
+                <img src="{% static 'images/B6L.jpg' %}" alt="20 Lt">
+                <div class="content">
+                    <h3>20 Lt</h3>
+                </div>
+            </div>
+            <div class="cart-item">
+                <span class="fas fa-shopping-cart"></span>
+                <img src="{% static 'images/B20L.jpg' %}" alt="20 Lt">
+                <div class="content">
+                    <h3>20 Lt</h3>
+                </div>
+            </div>
+            <!-- Add more cart items here -->
+            <a href="#" class="btn">Pedir</a>
+        </div>
+    </header>
+    <!-- Header section ends -->
+
+    <!-- Home section starts -->
+    <section class="inicio" id="inicio">
+        <div class="content">
+
+            <h3>Agua de la Cascada</h3>
+            <p>¡Agua De Vida... Bienestar Para Todos!</p>
+            <a href="#" class="btn">Información</a>
+        </div>
+    </section>
+
+    <!--home section ends-->
+
+
+
+    <!--us section starts-->
+    <section class="nosotros" id="nosotros">
+        <h1 class="heading">Sobre Nosotros</h1>
+        <div class="row">
+            <div class="image">
+                <img src="{% static 'images/Nosotros.jpg' %}" alt="Nosotros">
+            </div>
+            <div class="content">
+                <p>Planta embotelladora y purificadora de agua. Somos una empresa ubicada en el municipio de Cota,
+                    dedicada al procesamiento de agua purificada para ofrecer agua potable de alta calidad.</p>
+                <p>Contamos con el personal capacitado y las herramientas necesarias para ofrecer un servicio de alta
+                    calidad cumpliendo con todos los estándares.</p>
+                <a href="#" class="btn">Conócenos</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!--us section ends-->
+    <!--products section starts-->
+
+
+    <section class="productos" id="productos">
+        <h1 class="heading">Productos</h1>
+        <div class="box-container">
+            <div class="box">
+                <h3>Botella de 250 ml</h3>
+                <br>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="image">
+                    <img src="{% static 'images/B250ml.jpg' %}" alt="250 ml">
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-eye"></a>
+                </div>
+            </div>
+            <div class="box">
+                <h3>Botella de 330 ml</h3>
+                <br>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="image">
+                    <img src="{% static 'images/B330ml.jpg' %}" alt="330 ml">
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-eye"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>Botella de 600 ml</h3>
+                <br>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="image">
+                    <img src="{% static 'images/B600ml.jpg' %}" alt="600 ml">
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-eye"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>Bolsa de agua 6 Lt</h3>
+                <br>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="image">
+                    <img src="{% static 'images/B6L.jpg' %}" alt="B6 L">
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-eye"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>Botellon_20Lt</h3>
+                <br>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="image">
+                    <img src="{% static 'images/B20L.jpg' %}" alt="B20 L">
+                </div>
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-eye"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--products section ends-->
+
+    <!--contact section starts-->
+
+    <section class="contactenos" id="contactenos">
+        <h1 class="heading">Contáctenos</h1>
+        <div class="row">
+            <iframe class="map" title="Mapa Ublicación"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.7083717541423!2d-74.09401020000001!3d4.8200535000000135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f86c20335469d%3A0xa61cda25345cc3b6!2sAgua%20de%20La%20Cascada!5e0!3m2!1ses!2sco!4v1692000744864!5m2!1ses!2sco"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe></i>
+            <form action="">
+                <h3> Contacto</h3>
+
+                <div class="inputBox">
+                    <span class="fas fa-user"></span>
+                    <input type="text" placeholder="Nombre">
+                </div>
+
+                <div class="inputBox">
+                    <span class="fas fa-envelope"></span>
+                    <input type="email" placeholder="Email">
+                </div>
+
+                <div class="inputBox">
+                    <span class="fas fa-phone"></span>
+                    <input type="number" placeholder="Tel">
+                </div>
+                <input type="submit" value="Contáctenos" class="btn">
+            </form>
+        </div>
+        <div class="footer-txt">
+            <h3>Cota sobre la via principal salida hacia Chia kilometro 1.5 (Local de esquina de la Moya Camellon la
+                Regadera)</h3>
+            <h3>Tel: 601+ 8775553</h3>
+            <p>Horario de atención
+                Lunes a Viernes
+                7 am a 5 pm
+                Sábados
+                7 am a 1 pm </p>
+        </div>
+    </section>
+    <!--contact section ends-->
+
+    <!--footer section starts-->
+    <section class="footer">
+
+        <div class="share">
+
+            <a href="{% url 'error500' %}"class="fab fa-facebook-f"></a>
+            <a href="{% url 'error404' %}"class="fab fa-instagram"></a>
+        </div>
+
+        <div class="links">
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#productos">Productos</a>
+            <a href="#contactenos">Contáctenos</a>
+        </div>
+
+        <div class="footer2">Registro Sanitario RSAEI9122515</div>
+
+
+    </section>
+
+
+    <!--contact section ends-->
+
+
+
+
+
+
+    <!--custom js file link-->
+
+
+
+   
+
+</body>
+
+</html>

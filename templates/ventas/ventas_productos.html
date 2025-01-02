@@ -1,0 +1,116 @@
+{% extends 'ventas/base_ventas.html' %}
+{% load static %}
+{% block titulo %}
+
+    <h2>Productos</h2>
+
+{% endblock %}
+{% block ventas %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Productos</title>
+    <link rel="shortcut icon" href="Images/FaviconDashboard.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/styleVen.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+
+        <section id="content">
+            <!-- NAVBAR -->
+
+            <!-- MAIN -->
+            <main>
+                <ul class="box-info">
+{% comment %}                     <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-square-plus"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="#{% url 'pedidos' %}">
+                                <h3>CREAR PRODUCTO</h3>
+                            </a>
+                            <p></p>
+                        </span>
+
+                    </li> {% endcomment %}
+
+                    <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-file-excel"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="{% url 'exportar_excel_productos' %}">
+                                <h3>GENERAR REPORTE</h3>
+                            </a>
+
+
+
+                            <p></p>
+                        </span>
+                    </li>
+                </ul>
+
+
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3>Productos en inventario</h3>
+                            <i class='bx bx-search'></i>
+                            <i class='bx bx-filter'></i>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id Producto</th>
+                                    <th>Nombre Producto</th>
+                                    <th>Cantidad Producto</th>
+                                    <th>Precio Producto</th>
+                                    <th>Fecha Actualizacion</th>
+                                    <th>Presentacion</th>
+                                    <th>Otros Datos</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for p in productos %}
+
+                                <tr>
+                                    <td>
+                                        <p>{{ p.idproducto }}</p>
+                                    </td>
+                                    <td>{{ p.nombreproductoinv }}</td>
+                                    <td>{{ p.cantidadproducto }}</td>
+                                    <td>{{ p.precioproductoinv }} COP</td>
+                                    <td>{{ p.fechaactualizacioninv }}</td>
+                                    <td>{{ p.presentacion }}</td>
+                                    <td>{{ p.otrosdatos }}</td>
+                                    <td><span class="fa-solid fa-trash dark-purple " style="color: #f5f5f5;"></span>
+                                    </td>
+
+                                {% endfor %}
+
+                          
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </main>
+            <!-- MAIN -->
+    </div>
+
+{% endblock %}
+
+</html>

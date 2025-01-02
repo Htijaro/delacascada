@@ -1,0 +1,121 @@
+{% extends 'baselogin.html' %}
+  
+{% block content %}
+  
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{%static 'images/LogoCAS.PNG' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/loginStyle.css' %}">
+    <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   
+    
+    <title> De la cascada | Login </title>
+
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+
+
+                <h1>Crear Cuenta</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <a href="/signup" class="btn btn-primary"> REGISTRARME </a>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form method="post" action="{% url 'login' %}">
+
+                {% if user.is_authenticated %}
+            
+                    <h3>{{ user.username }}</h3>
+                    <br>
+                    <br>
+                    <h5>Fecha de registro:</h5>
+                    <h6> {{ user.date_joined }} </h6>
+                    <br>
+                    <h5>Última vez: </h5>
+                    <h6> {{ user.last_login }} </h6>
+                    <br>
+                    <h5>Email:</h5>
+                    <h6> {{ user.email }} </h6>
+                    <br>
+                    <a href="{% url 'signout' %}" class="btn btn-danger"><span class="glyphicon glyphicon-log-in"></span>CERRAR SESIÓN</a>
+                
+                {% else %}
+
+                {% csrf_token %}
+                <h1>Ingresar</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+
+                <a href="/login">¿Olvidaste tu contraseña?</a>
+                <a href="/signin" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>INGRESAR</a>
+                {{ msg }}
+                {% endif %} 
+            </form> 
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Hola, aquí puedes registrarte</h1>
+                    <p>Registro</p>
+                    <button class="btn btn-primary" id="login">Ingresar</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Bienvenido de vuelta!</h1>
+
+                    {% if user.is_authenticated %}
+
+                        {% if user.email == 'auxiliarventas@delacascada.com' or user.email == 'asistenteventas@delacascada.com' %}
+                            
+                            <a href="{% url 'dashventas' %}"><button class="hidden">Ir a mi módulo</button></a>
+
+                        {% elif user.email == 'jefeproduccion@delacascada.com' %}
+                            
+                            <a href="{% url 'dashproduccion' %}"><button class="hidden">Ir a mi módulo</button></a>
+
+                        {% elif user.email == 'administrador@delacascada.com' or user.email == 'asistenteadministrativo@delacascada.com'%}    
+                            
+                            <a href="{% url 'dashinventario' %}"><button class="hidden">Ir a mi módulo</button></a>
+
+                        {% else %}
+                            
+                            <a href="{% url 'Tienda' %}"><button class="hidden">Ir a carrito de compras</button></a>
+
+                        {% endif %}
+                            
+                    {% else %}
+
+                        <button class="btn btn-primary" id="register">Registrarme</button>
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/logscript.js' %}"></script>
+    
+</body>
+
+</html>
+
+{% endblock %}

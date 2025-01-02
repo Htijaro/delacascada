@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: mysql-svc2
+  labels:
+    app: mysql-dpl2
+    tier: database
+spec:
+  type: NodePort
+  ports:
+  - targetPort: 3306
+    port: 3306
+    nodePort: 30007
+  selector:
+    app: mysql-dpl2
+    tier: database

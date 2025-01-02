@@ -1,0 +1,160 @@
+{% extends 'inventario/base_inventario.html' %}
+{% load static %}
+{% block titulo %}
+
+    <h2>Control Inventario</h2>
+
+{% endblock %}
+{% block contenido %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Inventario</title>
+    <link rel="shortcut icon" href="images/FaviconDashboard.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/styleInv.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    
+
+        <section id="content">
+            <!-- NAVBAR -->
+
+            <!-- MAIN -->
+            <main>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-square-plus"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="FormularioInv.html">
+                                <h3>CREAR</h3>
+                            </a>
+
+
+
+                            <p></p>
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="#">
+                                <h3>GENERAR REPORTE</h3>
+                            </a>
+
+
+
+                            <p></p>
+                        </span>
+                    </li>
+                </ul>
+
+
+
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3>Control Inventario</h3>
+                            <i class='bx bx-search'></i>
+                            <i class='bx bx-filter'></i>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th>Lote</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="images/B250ml.jpg">
+                                        <p>Botella 250ml</p>
+                                    </td>
+                                    <td>18-08-2023</td>
+                                    <td><span class="status completed">Entregado</span></td>
+                                    <td>12082023 99642</td>
+                                    <td><a href="#"><span class="fa-solid fa-file-pen dark-purple"></span></a></td>
+                                    <td><a href="#"><span class="fa-solid fa-trash dark-purple "></span></a></td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="images/B330ml.jpg">
+                                        <p>Botella 330ml</p>
+                                    </td>
+                                    <td>18-08-2023</td>
+                                    <td><span class="status p.">Pendiente</span></td>
+                                    <td>22082023 99645</td>
+                                    <td><a href="#"><span class="fa-solid fa-file-pen dark-purple"></span></a></td>
+                                    <td><a href="#"><span class="fa-solid fa-trash dark-purple "></span></a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="images/B600ml.jpg">
+                                        <p>Botella 600ml</p>
+                                    </td>
+                                    <td>18-08-2023</td>
+                                    <td><span class="status pending">Eliminado</span></td>
+                                    <td>13034023 99124</td>
+                                    <td><a href="#"><span class="fa-solid fa-file-pen dark-purple"></span></a></td>
+                                    <td><a href="#"><span class="fa-solid fa-trash dark-purple "></span></a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="images/B6L.jpg">
+                                        <p>Bolsa 6L</p>
+                                    </td>
+                                    <td>18-08-2023</td>
+                                    <td><span class="status completed">Entregado</span></td>
+                                    <td>12082023 99124</td>
+                                    <td><a href="#"><span class="fa-solid fa-file-pen dark-purple"></span></a></td>
+                                    <td><a href="#"><span class="fa-solid fa-trash dark-purple "></span></a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="images/B20L.jpg">
+                                        <p>Botellón 20L</p>
+                                    </td>
+                                    <td>18-08-2023</td>
+                                    <td><span class="status completed">Entregado</span></td>
+                                    <td>12082023 99832</td>
+                                    <td><a href="#"><span class="fa-solid fa-file-pen dark-purple"></span></a></td>
+                                    <td><a href="#"><span class="fa-solid fa-trash dark-purple "></span></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </main>
+            <!-- MAIN -->
+    </div>
+
+</div>
+
+    {% endblock  %}
+
+   
+
+</html>

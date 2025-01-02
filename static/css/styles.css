@@ -1,0 +1,123 @@
+
+
+body {
+    background-image: url(../Images/Mar.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-color: #003459;
+    justify-content: left;
+}
+
+p {
+    position:relative;
+    color: #FFD500;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    left: 5px;
+    width: 350px;
+}
+
+a{
+    position:relative;
+    color: white;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    left: 5px;
+    width: 350px;
+}
+
+.topHeader {
+    font-size: 20px;
+    position: relative;
+    left: 80px;
+    bottom: 40px;
+    font-family: 'Roboto', sans-serif;
+    align-self: end;
+    color: #FFD500;
+}
+
+.action{
+    margin-top: 100px;
+}
+
+.formBox {
+    display: flex;
+    position: relative;
+    padding: 60px;
+    width: 30%;
+    height: 450px;
+    background: transparent;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    margin-top: 10px;
+    margin-left: 500px;
+}
+
+.fa-solid.fa-user{
+    color: white;
+    width: 5%;
+}
+
+.fa-sharp.fa-solid.fa-key{
+    color: white;
+    width: 5%
+}
+
+.logo-cas{
+    padding: 10px;
+    height: 110px;
+    width: 310px;
+    margin-left: 60px;
+    margin-top: 30px;
+}
+
+.formContainer {
+    display:grid;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.col-md-4{
+    display:grid;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 800px;
+}
+
+.inputText {
+    height: 40px;
+    width: 800px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    padding: 0 0 0 20px;
+    opacity: 90%;
+    color: black;
+}
+
+::-webkit-input-placeholder {
+    color: rgb(49, 48, 48);
+}
+
+i {
+    position: relative;
+    top: -29px;
+    right: 20px;
+}
+
+#submitButton {
+    height: 40px;
+    width: 350px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    background-color: FFD500;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+

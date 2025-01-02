@@ -1,0 +1,18 @@
+
+{% extends 'baselogin.html' %}
+  
+{% block title %}Login{% endblock %}
+
+  
+{% block content %}
+   <h2>Has ingresado con éxito!, bienvenid@</h2>
+   <br>
+   {% if user.is_authenticated %}
+      <h4>Hola! {{ user.username }}!</h4>
+      <br>
+      <a href="/signout" class="btn btn-danger">CERRAR SESIÓN</a>
+    {% else %}
+      <a href="/signin" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Login</a> 
+      <a href="/signup" class="btn btn-success">Signup</a>
+    {% endif %}
+{% endblock %}

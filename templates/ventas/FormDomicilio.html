@@ -1,0 +1,41 @@
+{% extends 'baselogin.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Domicilio</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h5>CREAR DOMICILIO</h5>
+  
+  <form method="post">
+    {% csrf_token %}
+    
+    <label for="{{ formdomicilio.idpedido.id_for_label }}">Id Pedido:</label>
+    {{ formdomicilio.idpedido }}
+    <br>
+    
+    <label for="{{ formpedido.estadodomicilio.id_for_label }}">Estado Domicilio:</label>
+    {{ formdomicilio.estadodomicilio }}
+    <br>
+    
+
+    <div class="button-container">
+        <button type="submit" class="btn-submit">Crear Domicilio</button>
+        <button type="button" class="btn btn-danger" onclick="window.location.href='/AppVentas/'">Cancelar</button>
+    </div>
+  </form>
+
+    <script src="{% static 'js/scriptven.js' %}"></script>
+
+
+</body>
+</html>
+
+{% endblock %}

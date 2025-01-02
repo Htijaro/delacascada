@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content= "Agua, Dashboard" >
+    <meta name="description" content= "Dashboard ventas" >
+    <meta name="author" content= "Agua de la cascada, DeLaCascada" >
+    <title>Dashboard | Ventas</title>
+    <link rel="shortcut icon" href="Images/FaviconDashboard.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/styleVen.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li>
+                <a href="{% url 'index' %}">
+                    <i class="fa-solid fa-home" ></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'ventas_pedidos' %}">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span>Pedidos</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'ventas_productos' %}">
+                    <i class="fa-solid fa-bottle-water" style="margin-left: 4px; margin-right: 3.7px;"></i>
+                    <span>Productos</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'ventas_clientes' %}">
+                    <i class="fas fa-user" style="margin-right: 3px;"></i>
+                    <span>Clientes</span>
+                </a>
+            <li>
+                <a href="{% url 'dashventas' %}">
+                    <i class="fa-solid fa-chart-simple" style="margin-right: 3px;"></i>
+                    <span>Ventas</span>
+                </a>
+            </li>
+            </li>
+            <li>
+                <a href="{% url 'ventas_domicilios' %}">
+                    <i class="fa-solid fa-person-running" style="margin-right: 3px;" ></i>
+                    <span>Domicilios</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Dashboard</span>
+                {% block titulo %}
+            
+
+                {% endblock titulo %}
+            </div>
+            <div class="user--info ">
+                {% comment %} <div class="searh-box"></div> {% endcomment %}
+                {% if user.is_authenticated %}
+
+                    <h4><div class="header-title2">{{ user.username }}</div></h4>
+                    
+                {% endif %}
+                {% comment %} <i class="fa-solid fa-magnifying-glass" style="color: rgba(113, 99, 186, 255);;"></i>
+                <input type="text" placeholder="Search"> {% endcomment %}
+            </div>
+            <a href="/signout" class="btn btn-danger">CERRAR SESIÓN</a>
+            
+
+        </div>
+
+        {% block ventas %}
+        <!-- Contenido -->
+        {% endblock ventas %}
+
+
+        
+        <div class="card--container">
+            <h2 class="main--title">Inventario - Bodega</h2>
+            {% for p in productos %}
+            <div class="card--wrapper">
+                <div class="payment--card light-purple">
+                    <div class="card--header">
+                        <div class="amount">
+                            
+                            <span class="title">{{ p.nombreproductoinv }}</span>
+                            <span class="amount-value">Cantidad: {{ p.cantidadproducto }}</span>
+                            
+                        </div>
+                        <!-- <i class="fas fa-dollar-sign icon light-blue"></i> -->
+                    </div>
+                    <span class="card-detail">VU ${{ p.precioproductoinv }}</span>
+                </div>
+                {% endfor %}
+            
+    
+            </div>
+        </div>
+    
+        <script src="{% static 'js/scriptVen.js' %}"></script>
+    
+    </body>
+    
+    </html>

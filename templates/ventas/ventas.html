@@ -1,0 +1,125 @@
+{% extends 'ventas/base_ventas.html' %}
+{% load static %}
+{% block titulo %}
+
+    <h2>Ventas</h2>
+
+{% endblock %}
+{% block ventas %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content= "Agua, Dashboard" >
+    <meta name="description" content= "Dashboard" >
+    <meta name="author" content= "Agua de la cascada, DeLaCascada" >
+    <title>Dashboard | Ventas</title>
+    <link rel="shortcut icon" href="Images/FaviconDashboard.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/styleVen.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+
+
+
+        <section id="content">
+            <!-- NAVBAR -->
+
+            <!-- MAIN -->
+            <main>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-square-plus"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="{% url 'formventas' %}">
+                                <h3>CREAR VENTA</h3>
+                            </a>
+
+
+
+                            <p></p>
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-file-excel"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="{% url 'exportar_excel_ventas' %}">
+                                <h3>GENERAR REPORTE</h3>
+                            </a>
+
+
+
+                            <p></p>
+                        </span>
+                    </li>
+                </ul>
+
+
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3>Pedidos</h3>
+                            <i class='bx bx-search'></i>
+                            <i class='bx bx-filter'></i>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>IdFactura</th>
+                                    <th>Fecha Venta</th>
+                                    <th>Hora Venta</th>
+                                    <th>Nombre Usuario</th>
+                                    <th>IdPedido</th>
+                                    <th>Acciones</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for v in ventas %}
+
+                                <tr>
+                                    <td>
+                                        <p>{{ v.idfactura }}</p>
+                                    </td>
+                                    <td>{{ v.fechaventa }}</td>
+                                    <td>{{ v.horaventa }}</td>
+                                    <td>{{ v.nombre_usuario }}</td>
+                                    <td>{{ v.idpedido }}</td>
+
+                                    <td class="acciones">
+                                        <a href="{% url 'editar_ventas' v.idventa %}"><span class="fa-solid fa-file-pen dark-purple "></span></a>
+                                        <a href="{% url 'eliminar_ventas' v.idventa %}"><span class="fa-solid fa-trash dark-purple Actions"></span></a>
+                                        <a href="{% url 'eliminar_ventas' v.idventa %}"><span class="fa-solid fa-receipt dark-purple"></span></a>
+                                    </td>
+                                {% endfor %}
+
+                          
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </main>
+            <!-- MAIN -->
+    </div>
+
+{% endblock %}
+
+</html>

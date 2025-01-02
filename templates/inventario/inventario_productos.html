@@ -1,0 +1,105 @@
+{% extends 'inventario/base_inventario.html' %}
+{% load static %}
+{% block titulo %}
+
+    <h2>Productos</h2>
+
+{% endblock %}
+{% block contenido %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content= "Agua, Dashboard Producto" >
+    <meta name="description" content= "Dashboard" >
+    <meta name="author" content= "Agua de la cascada, DeLaCascada" >
+    <title>Dashboard | Productos</title>
+    <link rel="shortcut icon" href="Images/FaviconDashboard.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/styleVen.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+        <section id="content">
+            <!-- NAVBAR -->
+
+            <!-- MAIN -->
+            <main>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-square-plus"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="{% url 'formproducto' %}">
+                                <h3>CREAR PRODUCTO</h3>
+                            </a>
+                            <p></p>
+                        </span>
+                    </li> 
+
+                    <li>
+                        <i class='bx bxs-dollar-circle'>
+                            <i class="fa-solid fa-file-excel"></i>
+                        </i>
+
+                        <span class="text">
+                            <a href="{% url 'exportar_excel_productos' %}">
+                                <h3>GENERAR REPORTE</h3>
+                            </a>
+
+                            <p></p>
+                        </span>
+                    </li>
+                </ul>
+
+
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3>Productos en inventario</h3>
+                            <i class='bx bx-search'></i>
+                            <i class='bx bx-filter'></i>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id Producto</th>
+                                    <th>Nombre Producto</th>
+                                    <th>Cantidad Producto</th>
+                                    <th>Precio Producto</th>
+                                    <th>Presentacion</th>
+                                    <th>Acciones</th>
+                                 </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in productos %}
+                                <tr>
+                                    <td><center>{{ p.idproducto }}</center></td>
+                                    <td>{{ p.nombreproductoinv }}</td>
+                                    <td>{{ p.cantidadproducto }}</td>
+                                    <td>{{ p.precioproductoinv }} COP</td>
+                                    <td>{{ p.presentacion }} COP</td>
+                                    <td class="acciones">
+                                        <a href="{% url 'editar_productos' p.idproducto %}"><span class="fa-solid fa-file-pen dark-purple "></span></a>
+                                        <a href="{% url 'eliminar_productos' p.idproducto %}"><span class="fa-solid fa-trash dark-purple Actions"></span></a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+            <!-- MAIN -->
+    </div>
+
+{% endblock %}
+
+</html>

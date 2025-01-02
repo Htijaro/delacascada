@@ -1,0 +1,77 @@
+{% extends 'baselogin.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/formStyles.css' %}">
+    <title>Crear Pedido</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h5>CREAR USUARIOS</h5>
+  
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="column1">
+
+      <label for="{{ formpedido.usuario_pedido.id_for_label }}">Usuario pedido:</label>
+      {{ formpedido.usuario_pedido }}
+      <br>
+      
+      <label for="{{ formpedido.direccionpedido.id_for_label }}">Direccion pedido:</label>
+      {{ formpedido.direccionpedido }}
+      <br>
+      
+      <label for="{{ formpedido.telefonopedido.id_for_label }}">Telefono pedido:</label>
+      {{ formpedido.telefonopedido }}
+      <br>
+      
+      <label for="{{ formpedido.estadopedido.id_for_label }}">Estado pedido:</label>
+      {{ formpedido.estadopedido }}
+      <br>
+
+        <div class="button-container">
+          <button type="submit" class="btn-submit">Crear Pedido</button>
+          <button type="button" class="btn btn-danger" onclick="window.location.href='/AppVentas/VentasPedidos/'">Cancelar</button>
+        </div>
+
+    </div>
+    <div>
+    
+      <label for="{{ formpedido.observacion.id_for_label }}">Observacion:</label>
+      {{ formpedido.observacion }}
+      <br>
+      
+      <label for="{{ formpedido.producto.id_for_label }}">Producto:</label>
+      {{ formpedido.producto }}
+      <br>
+      
+      <label for="{{ formpedido.cantidad.id_for_label }}">Cantidad:</label>
+      {{ formpedido.cantidad }}
+      <br>
+      
+      <label for="{{ formpedido.precioproductoinv.id_for_label }}">Precio:</label>
+      {{ formpedido.precioproductoinv }}
+      <br>
+      
+      <label for="{{ formpedido.total.id_for_label }}">Total:</label>
+      {{ formpedido.total }}
+      <br>
+    </div>
+    
+
+  </form>
+
+    <script src="{% static 'js/scriptven.js' %}"></script>
+
+
+</body>
+</html>
+
+{% endblock %}

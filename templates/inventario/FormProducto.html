@@ -1,0 +1,106 @@
+{% extends 'baselogin.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Producto</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .form-container {
+            margin-top: 0.1px;  
+            overflow-y: auto;
+            padding: 70px 100px; 
+        }
+        .button-container {
+            display: flex;
+            gap: 50px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+  <h5>CREAR PRODUCTO</h5>
+  <div class="container mt-5"> 
+    <!-- Asegúrate de agregar el enctype para manejar la subida de archivos -->
+    <form method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+      <div class="form-container">
+        
+        <!-- Usuario -->
+        <div class="mb-3">
+          <label for="{{ formproducto.usuario_pedido.id_for_label }}">Nombre de Usuario:</label>
+          <h4>{{ user.username }}</h4>
+          <input type="hidden" name="usuario_pedido" value="{{ user.username }}">
+        </div>
+
+        <!-- Nombre del producto -->
+        <div class="mb-3">
+          <label for="{{ formproducto.nombreproductoinv.id_for_label }}" class="form-label">Nombre Producto:</label>
+          {{ formproducto.nombreproductoinv }}
+        </div>
+
+        <!-- Cantidad del producto -->
+        <div class="mb-3">
+          <label for="{{ formproducto.cantidadproducto.id_for_label }}" class="form-label">Cantidad Producto:</label>
+          {{ formproducto.cantidadproducto }}
+        </div>
+
+        <!-- Precio del producto -->
+        <div class="mb-3">
+          <label for="{{ formproducto.precioproductoinv.id_for_label }}" class="form-label">Precio Producto:</label>
+          {{ formproducto.precioproductoinv }}
+        </div>
+
+        <!-- Fecha de actualización del inventario -->
+        <div class="mb-3">
+          <label for="{{ formproducto.fechaactualizacioninv.id_for_label }}" class="form-label">Fecha de Actualización:</label>
+          {{ formproducto.fechaactualizacioninv }}
+          <small class="form-text text-muted">Por favor ingresa una fecha válida en el formato YYYY-MM-DD.</small>
+        </div>
+
+        <!-- Otros datos  -->
+        <div class="mb-3">
+          <label for="{{ formproducto.otrosdatos.id_for_label }}" class="form-label">Otros Datos:</label>
+          {{ formproducto.otrosdatos }}
+        </div>
+
+        <!-- Presentación del producto -->
+        <div class="mb-3">
+          <label for="{{ formproducto.presentacion.id_for_label }}" class="form-label">Presentación:</label>
+          {{ formproducto.presentacion }}
+        </div>
+
+        <!-- Foto del producto -->
+        <div class="mb-3">
+          <label for="{{ formproducto.foto_producto.id_for_label }}" class="form-label">Foto del Producto (Opcional):</label>
+          {{ formproducto.foto_producto }}
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="button-container">
+            <button type="submit" class="btn btn-primary">Crear Producto</button>
+            <button type="button" class="btn btn-danger" onclick="window.location.href='/AppInventario/InventarioProductos'">Cancelar</button>
+        </div>
+        <!-- Errores -->
+        <div class="form-errors">
+          {{ formproducto.non_field_errors }}
+          {% for field in formproducto %}
+              {{ field.errors }}
+          {% endfor %}
+      </div>
+        
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/scriptven.js' %}"></script>
+</body>
+</html>
+
+{% endblock %}

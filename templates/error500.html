@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error del Servidor | Agua de La Cascada</title>
+    <link rel="shortcut icon" href="{% static 'images/FaviconError.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/Styles500.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta name="description" content="Error 500: Algo salió mal en el servidor. Estamos trabajando para resolverlo.">
+</head>
+
+<body>
+    <!-- Header section starts -->
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="{% static 'images/LogoCASWhite.png' %}" alt="De La Cascada">
+        </a>
+
+        <nav class="navbar">
+            <a href="{% url 'index' %}">Inicio</a>
+            <a href="{% url 'index' %}">Nosotros</a>
+            <a href="{% url 'index' %}">Productos</a>
+            <a href="{% url 'index' %}">Contáctenos</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+
+    </header>
+    
+        <div class="container">
+            <img class="error" src="{% static 'Images/cloud-server.png' %}" alt="">
+            <h1>Upss!.. Algo salió mal.<br> Error Interno del servidor 500 </h1>
+            <div class="boton">
+                <button><a href="{% url 'index' %}">Volver atrás</a></button>
+            </div>
+        </div> 
+        
+    <script src="{% static 'js/script copy500.js' %}"></script>
+</body>
+
+</html>

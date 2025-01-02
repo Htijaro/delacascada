@@ -1,0 +1,21 @@
+{% load static %}
+
+
+
+<h1>LISTAR USUARIOS</h1>
+
+
+{% for i in usuarios %}
+
+    <h4> {{ i.id }} </h4>
+    <h4> {{ i.firts_name }} </h4>
+    <h4> {{ i.password }} </h4>
+    <h4> {{ i.last_name }} </h4>
+    <h4> {{ i.direccion }} </h4>
+    <h4> {{ i.observaciones }} </h4>
+    <h4> {{ i.telefono }} </h4>
+    <h4> {{ i.is_superuser }} </h4>
+
+{% endfor %}
+
+

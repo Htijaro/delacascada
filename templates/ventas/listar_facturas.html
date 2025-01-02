@@ -1,0 +1,19 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+  <h2>Lista de Facturas</h2>
+  <table>
+    <tr>
+      <th>IdFactura</th>
+      <th>Fecha</th>
+      <th>IdCliente</th>
+    </tr>
+    {% for factura in facturas %}
+    <tr>
+      <td>{{ factura.id_factura }}</td>
+      <td>{{ factura.fecha }}</td>
+      <td>{{ factura.id_cliente }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

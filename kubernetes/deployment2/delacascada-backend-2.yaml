@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: delacascada-backend-2
+  namespace: default
+  labels:
+    app: delacascada-backend-2
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: delacascada-backend-2
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: delacascada-backend-2
+        tier: frontend
+    spec:
+      containers:
+        - name: delacascada-backend2
+          image: htijaro/cascada:latest
+          env:
+            - name: DATABASE_NAME
+              value: "dbh2o"
+            - name: DATABASE_USER
+              value: "myuser"
+            - name: DATABASE_PASSWORD
+              value: "ubuntu08-"
+            - name: DATABASE_PORT
+              value: "30007"
+            - name: DATABASE_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              memory: "500Mi"
+

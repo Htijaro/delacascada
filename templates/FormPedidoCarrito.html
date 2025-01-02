@@ -1,0 +1,99 @@
+{% extends 'baselogin.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de compras</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .form-container {
+          margin-top: 0.1px;  
+          overflow-y: auto;
+          padding: 70px 100px; 
+        }  
+        .button-container {
+            display: flex;
+            gap: 50px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+  <h5>PEDIDO CARRITO DE COMPRAS</h5>
+  <div class="container mt-5">   
+    <form method="post" class="needs-validation" novalidate>
+      {% csrf_token %}
+      <div class="form-container">
+        <div class="mb-3">
+          <label for="{{ formpedidocarrito.usuario_pedido.id_for_label }}">Nombre de Usuario:</label>
+          <h4>{{ user.username }}</h4>
+          <input type="hidden" name="usuario_pedido" value="{{ user.username }}">
+        </div>
+        
+        <div class="mb-3">
+          <label for="{{ formpedidocarrito.direccionpedido.id_for_label }}" class="form-label">Direccion:</label>
+          {{ formpedidocarrito.direccionpedido }}
+          <div class="invalid-feedback">Por favor, ingrese una dirección.</div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="{{ formpedidocarrito.telefonopedido.id_for_label }}" class="form-label">Telefono:</label>
+          {{ formpedidocarrito.telefonopedido }}
+          <div class="invalid-feedback">Por favor, ingrese un número de teléfono.</div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="{{ formpedidocarrito.estadopedido.id_for_label }}" class="form-label">Estado pedido:</label>
+          {{ formpedidocarrito.estadopedido }}
+        </div>
+        
+        <div class="mb-3">
+          <label for="{{ formpedidocarrito.observacion.id_for_label }}" class="form-label">Observacion:</label>
+          {{ formpedidocarrito.observacion }}
+          <div class="invalid-feedback">Por favor, ingrese una observación.</div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="{{ formpedidocarrito.producto.id_for_label }}" class="form-label">Producto:</label>
+          {{ formpedidocarrito.producto }}
+          <div class="invalid-feedback">Por favor, seleccione un producto.</div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="{{ formpedidocarrito.cantidad.id_for_label }}" class="form-label">Cantidad:</label>
+          {{ formpedidocarrito.cantidad }}
+          <div class="invalid-feedback">Por favor, ingrese una cantidad válida.</div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="{{ formpedidocarrito.precioproductoinv.id_for_label }}" class="form-label">Precio:</label>
+          {{ formpedidocarrito.precioproductoinv }}
+          <div class="invalid-feedback">Por favor, ingrese el precio del producto.</div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="{{ formpedidocarrito.total.id_for_label }}" class="form-label">Total:</label>
+          {{ formpedidocarrito.total }}
+          <div class="invalid-feedback">Por favor, ingrese el total.</div>
+        </div>
+        
+        <div class="button-container">
+          <button type="submit" class="btn btn-primary">Crear Pedido</button>
+          <button type="button" class="btn btn-danger" onclick="window.location.href='/'">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/scriptven.js' %}">
+  
+  </script>
+</body>
+</html>
+
+{% endblock %}

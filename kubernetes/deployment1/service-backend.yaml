@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: delacascada-backend-service
+  labels:
+    app: delacascada-backend-dpl
+    tier: frontend
+spec:
+  type: NodePort
+  ports:
+  - targetPort: 8000
+    port: 8000
+    nodePort: 30010  
+  selector:
+    app: delacascada-backend-dpl
+    tier: frontend
+
+
+

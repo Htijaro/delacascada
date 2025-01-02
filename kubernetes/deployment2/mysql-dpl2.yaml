@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-dpl2
+  namespace: default
+  labels:
+    app: mysql-dpl2
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-dpl2
+      tier: database
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-dpl2
+        tier: database
+    spec:
+      containers:
+        - name: dbh2o-container
+          image: htijaro/dbh2o:latest
+          ports:
+            - containerPort: 3306
+          resources:
+            requests:
+              memory: "500Mi"
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "V3r02011$"
+            - name: MYSQL_DATABASE
+              value: "dbh2o"
+            - name: MYSQL_USER
+              value: "myuser"
+            - name: MYSQL_PASSWORD
+              value: "ubuntu08-"
+            - name: MYSQL_HOST
+              value: "mysql-service"
+          volumeMounts:
+            - name: mysql-volume
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-volume
+          hostPath:
+            path: /mnt/data1/mysql1
+            type: DirectoryOrCreate
+

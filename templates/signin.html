@@ -1,0 +1,35 @@
+
+{% extends 'baselogin.html' %}
+
+{% block title %}LOGIN{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{%static 'images/LogoCAS.PNG' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/loginStyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   
+    
+    <title> De la cascada | Login </title>
+    
+</head>
+
+  <h2>Login</h2> {{ msg }}
+  <form method="POST">
+    {% csrf_token %}
+    <label for="email">Correo electrónico</label>
+    <input type="text" name="email" id="email" required>
+    
+    <label for="password">Contraseña</label>
+    <input type="password" name="password" id="password" required>
+    
+    <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+  </form>
+
+{% endblock %}

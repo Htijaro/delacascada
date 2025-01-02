@@ -1,0 +1,46 @@
+{% extends 'baselogin.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Images/FaviconDashboard.png" type="image/x-icon">
+    <title>REGISTRO USUARIOS</title>
+    <style>
+      .form-container {
+        top: 0.1%;
+        height: 70vh; 
+        overflow-y: auto;
+        padding: 100px 100px; 
+      }
+      form {
+        margin-top: 100p
+      }
+    </style>
+</head>
+<body>    
+  <h2>REGISTRO USUARIOS</h2>
+  <div class="container mt-2">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-container">
+        {% for field in form %}
+        <p>
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </p>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Registrarme</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
+
+{% endblock %}
