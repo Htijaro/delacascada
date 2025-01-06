@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
             "127.0.0.1",
             "0.0.0.0",
             "localhost"
+            "delacascada-fkcbbud5guebczeb.eastus-01.azurewebsites.net"
 ]
 # Application definition
 
@@ -47,7 +48,9 @@ INSTALLED_APPS = [
     'AppProduccion',
     'AppInventario',
     'AppCarrito',
-    'AppUsuarios'
+    'AppUsuarios',
+    'delacascada'
+
     
 ]
 
