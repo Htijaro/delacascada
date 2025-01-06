@@ -49,8 +49,7 @@ INSTALLED_APPS = [
     'AppProduccion',
     'AppInventario',
     'AppCarrito',
-    'AppUsuarios',
-    'delacascada'
+    'AppUsuarios'
 
     
 ]
