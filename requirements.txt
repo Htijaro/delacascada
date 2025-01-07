@@ -1,7 +1,7 @@
 ﻿asgiref==3.8.1
 cryptography==3.4.8
 diff-match-patch==20230430
-Django==5.0.4
+Django==4.0.4
 django-import-export==4.1.1
 et-xmlfile==1.1.0
 humanize==4.9.0
