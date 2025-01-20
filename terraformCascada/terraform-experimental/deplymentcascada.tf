@@ -1,4 +1,4 @@
-resource "kubernetes_deployment" "delacascadadpl" {
+resource "kubernetes_deployment" "delacascada" {
   metadata {
     name = "delacascada"
     labels = {

@@ -1,4 +1,4 @@
-resource "kubernetes_deployment" "dbh2odpl" {
+resource "kubernetes_deployment" "dbh2o" {
   metadata {
     name = "dbh2o"
     labels = {
@@ -32,6 +32,14 @@ resource "kubernetes_deployment" "dbh2odpl" {
           env {
             name  = "MYSQL_DATABASE"
             value = var.env_vars["MYSQL_DATABASE"]
+          }
+          env {
+            name  = "MYSQL_USER"
+            value = var.env_vars["MYSQL_USER"]
+          }
+          env {
+            name  = "MYSQL_PASSWORD"
+            value = var.env_vars["MYSQL_PASSWORD"]
           }
         }
       }

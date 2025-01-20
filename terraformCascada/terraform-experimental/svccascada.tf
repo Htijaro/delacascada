@@ -1,4 +1,4 @@
-resource "kubernetes_service" "delacascadasvc" {
+resource "kubernetes_service" "delacascada_service" {
   metadata {
     name = "delacascada-service"
   }
