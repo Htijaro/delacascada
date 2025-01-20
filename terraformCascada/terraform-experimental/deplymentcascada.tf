@@ -30,7 +30,7 @@ resource "kubernetes_deployment" "delacascada" {
           ]
           env {
             name  = "DATABASE_HOST"
-            value = "mysql-service"
+            value = var.env_vars["DATABASE_HOST"]
           }
         }
       }
