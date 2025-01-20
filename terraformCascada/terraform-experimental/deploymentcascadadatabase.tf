@@ -25,6 +25,14 @@ resource "kubernetes_deployment" "dbh2odpl" {
         container {
           name  = "dbh2o"
           image = "htijaro/mysql:latest"
+          env {
+            name  = "MYSQL_ROOT_PASSWORD"
+            value = var.env_vars["MYSQL_ROOT_PASSWORD"]
+          }
+          env {
+            name  = "MYSQL_DATABASE"
+            value = var.env_vars["MYSQL_DATABASE"]
+          }
         }
       }
     }
